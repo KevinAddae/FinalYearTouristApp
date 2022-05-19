@@ -63,8 +63,8 @@ class Tourist_Future_Interest : Fragment(R.layout.fragment_tourist__future__inte
 
         //    userMapList1 = generateSample()
         // set the layout manager
-        userMapList1 = ArrayList()
-        userMapList1.add(db!!.getFutureLocation(1))
+        userMapList1 = generateSample()
+        //userMapList1.add(db!!.getFutureLocation(1))
 //        temp.forEach {
 //            userMapList1.add(it)
 //        }
@@ -85,7 +85,6 @@ class Tourist_Future_Interest : Fragment(R.layout.fragment_tourist__future__inte
                 bundle.putSerializable("list", userMapList1[position])
                 val fragment = DisplayMap()
                 fragment.arguments = bundle
-                //parentFragmentManager.setFragmentResult("futureMark",bundle)
 
                 var fragmentManager = activity!!.supportFragmentManager
                 var fragmentTransaction = fragmentManager.beginTransaction()
@@ -136,21 +135,20 @@ class Tourist_Future_Interest : Fragment(R.layout.fragment_tourist__future__inte
          * checks the name of the previous fragment as a condition
          * casts the information sent from the create map fragment
          */
-//        if (getCallerFragment().equals("CreateMap")) {
-//            parentFragmentManager.setFragmentResultListener(
-//                "saveMark", this, FragmentResultListener { requestKey, result ->
-//
-//                    val input = result.getSerializable("choice") as UserMap
-//                    Log.i(TAG, "gotten $input}")
-//                    for(place in input.places) {
-//                        var type = UserMap(input.title, arrayListOf(place))
-//                        db.addFutureInterest(type)
-//                    }
-//                    userMapList1.add(input)
-//                    mapAdapter.notifyItemInserted(userMapList1.size - 1)
-//                })
-//
-//        }
+        if (getCallerFragment().equals("CreateMap")) {
+            var bundle = this.arguments
+            val input = bundle?.getSerializable("item") as UserMap
+
+            Log.i(TAG, "gotten $input}")
+            for(place in input.places) {
+                var type = UserMap(input.title, arrayListOf(place))
+                db?.addFutureInterest(type)
+            }
+            userMapList1.add(input)
+            mapAdapter.notifyItemInserted(userMapList1.size - 1)
+
+
+        }
     }
 
     /**
@@ -184,13 +182,12 @@ class Tourist_Future_Interest : Fragment(R.layout.fragment_tourist__future__inte
 
             var bundle = Bundle()
             bundle.putString("title", title)
-            val fragment = DisplayMap()
+            val fragment = CreateMap()
             fragment.arguments = bundle
-                //parentFragmentManager.setFragmentResult("userMapTitle",bundle)
 
             var fragmentManager = requireActivity().supportFragmentManager
             var fragmentTrasaction = fragmentManager.beginTransaction()
-            fragmentTrasaction.replace(R.id.frameLayout, CreateMap())
+            fragmentTrasaction.replace(R.id.frameLayout, fragment)
             fragmentTrasaction.addToBackStack("Future Interest")
             fragmentTrasaction.commit()
             dialog.dismiss()

@@ -92,7 +92,9 @@ class CreateMap : Fragment() {
                 choice.add("false")
             localInfo.add(choice)
             val marker = gMap.addMarker(MarkerOptions().position(latLng).title(title).snippet(description))
-            markers.add(marker)
+            if (marker != null) {
+                markers.add(marker)
+            }
             dialog.dismiss()
 
         }
@@ -129,12 +131,16 @@ class CreateMap : Fragment() {
 
                 for ((i, m) in markers.withIndex()){
 
-                    val mark = Future_location(m.title,localInfo.get(i).get(0),
-                        localInfo.get(i).get(1),m.snippet,
-                        localInfo.get(i).get(2),1,2,
-                        m.position.latitude,m.position.longitude)
+                    val mark = m.snippet?.let { it1 ->
+                        Future_location(m.title,localInfo.get(i).get(0),
+                            localInfo.get(i).get(1), it1,
+                            localInfo.get(i).get(2),1,2,
+                            m.position.latitude,m.position.longitude)
+                    }
 
-                    places.add(mark)
+                    if (mark != null) {
+                        places.add(mark)
+                    }
 
                 }
 //                val places = markers.map { marker ->
@@ -155,24 +161,30 @@ class CreateMap : Fragment() {
 
                 Log.i(TAG,"gotten $places")
                 var userM = UserMap("awd", places)
-                //parentFragmentManager.setFragmentResultListener("userMapTitle",this, FragmentResultListener {
-                //        requestKey, result ->
-                //    userM.title = result.getString("title").toString()
-                userM.title = "test"
-                //})
-
+                // bundle to send to another fragment
                 var bundle = Bundle()
-                bundle.putSerializable("choice", userM)
+                //collect bundle from previous fragment
+                var collectBund = this.arguments
+                val title = collectBund?.getString("title") as String
+
+                userM.title = title
+
+                Log.i(TAG,"usermap is: ${userM.title}")
+                Log.i(TAG,"usermap is: ${userM.places[0].name}")
+
+
+                bundle.putSerializable("item", userM)
                 val fragment = Tourist_Future_Interest()
                 fragment.arguments = bundle
-                //parentFragmentManager.setFragmentResult("saveMark", bundle)
 
-
+            if (userM != null) {
                 var fragmentManager = requireActivity().supportFragmentManager
                 var fragmentTrasaction = fragmentManager.beginTransaction()
                 fragmentTrasaction.replace(R.id.frameLayout, Tourist_Future_Interest())
                 fragmentTrasaction.addToBackStack("CreateMap")
                 fragmentTrasaction.commit()
+                }
+
             }
         }
         if (mapFragment != null) {

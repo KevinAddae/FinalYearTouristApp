@@ -29,11 +29,12 @@ import java.io.IOException
 private const val TAG = "tourist_review_create"
 
 class Tourist_review_create : Fragment(R.layout.fragment_tourist_review_create) {
+    val PICK_IMAGE = 1
+    val imageView = view?.findViewById<ImageView>(R.id.createReview_uploadedPicture)
 
-    private var db = TouristDatabase(requireActivity())
+    //private var db = TouristDatabase(requireActivity())
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val imageView = view?.findViewById<ImageView>(R.id.createReview_uploadedPicture)
 
         /**
          *  returns data from the gallery intent and uses the data
@@ -48,20 +49,21 @@ class Tourist_review_create : Fragment(R.layout.fragment_tourist_review_create) 
 //                imageView?.setImageBitmap(bitmapImage)
 //            }
 //        }
-//
-//        val uploadBtn = view?.findViewById<Button>(R.id.createReview_UploadPictureBtn)
-//
-//        /**
-//         * When the Upload button is pressed the user is sent to the gallery
-//         */
-//        uploadBtn?.setOnClickListener {
-//            Log.i(TAG, "btn press")
-//            val galleryIntent = Intent(Intent.ACTION_PICK)
-//            galleryIntent.type = "image/*"
-//            //returns the data selected
-//            resultLauncher.launch(galleryIntent)
-//            Log.i(TAG, "Go to Gallery")
-//        }
+
+        val uploadBtn = view?.findViewById<Button>(R.id.createReview_UploadPictureBtn)
+
+        /**
+         * When the Upload button is pressed the user is sent to the gallery
+         */
+        uploadBtn?.setOnClickListener {
+            Log.i(TAG, "btn press")
+            val galleryIntent = Intent(Intent.ACTION_PICK)
+            galleryIntent.type = "image/*"
+            //returns the data selected
+            startActivityForResult(galleryIntent,PICK_IMAGE)
+           // resultLauncher.launch(galleryIntent)
+            Log.i(TAG, "Go to Gallery")
+        }
 
         val confirmBtn = view?.findViewById<Button>(R.id.createReview_confirmBtn)
         val title = view?.findViewById<EditText>(R.id.createReview_Title)?.text.toString()
@@ -81,9 +83,11 @@ class Tourist_review_create : Fragment(R.layout.fragment_tourist_review_create) 
 
             } else {
                 // converts the image from bitmap to byteArray
-                val bitmap = imageView.drawable.toBitmap()
+                val bitmap = imageView?.drawable?.toBitmap()
                 val stream = ByteArrayOutputStream()
-                bitmap.compress(Bitmap.CompressFormat.PNG,90,stream)
+                if (bitmap != null) {
+                    bitmap.compress(Bitmap.CompressFormat.PNG,90,stream)
+                }
                 val image = stream.toByteArray()
 
                 //creates object review to store into a database
@@ -93,7 +97,7 @@ class Tourist_review_create : Fragment(R.layout.fragment_tourist_review_create) 
                         it1, "P", image, 1, 1
                     )
                 }!!
-                db.addReview(rev)
+                //db.addReview(rev)
 
 
                 var fragmentManager = requireActivity().supportFragmentManager
@@ -110,14 +114,17 @@ class Tourist_review_create : Fragment(R.layout.fragment_tourist_review_create) 
          */
 
 
-//        @Override
-//        override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-//            if (resultCode == Activity.RESULT_OK && data != null) {
-//                val selectedImage = data.data
-//                val bitmapImage = MediaStore.Images.Media.getBitmap(requireActivity().contentResolver, selectedImage)
-        //               imageView?.setImageBitmap(bitmapImage)
-//            }
-//        }
     }
+    @Override
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
 
+        if (resultCode == Activity.RESULT_OK && requestCode == PICK_IMAGE) {
+            val selectedImage = data?.data
+            val bitmapImage = MediaStore.Images.Media.getBitmap(requireActivity().contentResolver, selectedImage)
+            imageView?.setImageBitmap(bitmapImage)
+
+        }
+
+    }
 }

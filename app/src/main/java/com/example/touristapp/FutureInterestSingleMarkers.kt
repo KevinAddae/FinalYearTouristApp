@@ -28,10 +28,13 @@ class FutureInterestSingleMarkers : Fragment(R.layout.fragment_future_interest_s
 //                requestKey, result ->
 //
 //            val input = result.getSerializable("MarkList") as UserMap
-//            input.places.forEach { s ->
-//                singleMarks.add(s)
-//            }
+
 //        })
+        var bundle = this.arguments
+        var input = bundle?.getSerializable("MarkList") as UserMap
+        input.places.forEach { s ->
+            singleMarks.add(s)
+        }
 
         val recycler = view?.findViewById<RecyclerView>(R.id.maps_singleMark_recycler)
         recycler.layoutManager = LinearLayoutManager(activity)
@@ -46,7 +49,7 @@ class FutureInterestSingleMarkers : Fragment(R.layout.fragment_future_interest_s
                 var fragmentManager = activity!!.supportFragmentManager
                 var fragmentTransaction = fragmentManager.beginTransaction()
                 fragmentTransaction.replace(R.id.frameLayout, fragment)
-                fragmentTransaction.addToBackStack("Tourist_Future_Interest")
+                fragmentTransaction.addToBackStack("FutureInterestSingleMarkers")
                 fragmentTransaction.commit()
             }
         })

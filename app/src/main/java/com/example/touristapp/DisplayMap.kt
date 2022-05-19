@@ -31,17 +31,39 @@ class DisplayMap : Fragment() {
 
 //        parentFragmentManager.setFragmentResultListener("futureMark",this, FragmentResultListener {
 //                requestKey, result ->
-//            val boundsBuilder = LatLngBounds.Builder()
-//            val input = result.getSerializable("list") as UserMap
-//
-//            input.places.forEach { s ->
-//
-//                var latLng = LatLng(s.latitude,s.longitude)
-//                boundsBuilder.include(latLng)
-//                googleMap.addMarker(MarkerOptions().position(latLng).title(s.name).snippet(s.description))
-//                googleMap.moveCamera(CameraUpdateFactory.newLatLngBounds(boundsBuilder.build(),1000,1000,0))
-//            }
-//
+        //    val input = result.getSerializable("list") as UserMap
+        val boundsBuilder = LatLngBounds.Builder()
+
+        if (getCallerFragment().equals("Tourist_Future_Interest")) {
+            var bundle = this.arguments
+            val input = bundle?.getSerializable("list") as UserMap
+
+            input.places.forEach { s ->
+
+                var latLng = LatLng(s.latitude, s.longitude)
+                boundsBuilder.include(latLng)
+                googleMap.addMarker(
+                    MarkerOptions().position(latLng).title(s.name).snippet(s.description)
+                )
+                googleMap.moveCamera(
+                    CameraUpdateFactory.newLatLngBounds(
+                        boundsBuilder.build(),
+                        1000,
+                        1000,
+                        0
+                    )
+                )
+            }
+        }
+        if (getCallerFragment().equals("FutureInterestSingleMarkers")) {
+            var bundle = this.arguments
+            val input = bundle?.getSerializable("single") as Future_location
+            var latLng = LatLng(input.latitude,input.longitude)
+            boundsBuilder.include(latLng)
+            googleMap.addMarker(MarkerOptions().position(latLng).title(input.name).snippet(input.description))
+            googleMap.moveCamera(CameraUpdateFactory.newLatLngBounds(boundsBuilder.build(),1000,1000,0))
+        }
+
 //        })
 
 //        parentFragmentManager.setFragmentResultListener("displaySingle",this, FragmentResultListener {
@@ -79,4 +101,10 @@ class DisplayMap : Fragment() {
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
         mapFragment?.getMapAsync(callback)
     }
+    private fun getCallerFragment(): String? {
+        val fm = fragmentManager
+        val count = requireFragmentManager().backStackEntryCount
+        return fm!!.getBackStackEntryAt(count - 1).name
+    }
+
 }

@@ -2,11 +2,13 @@ package com.example.touristapp
 
 import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.Toast
 //import androidx.fragment.app.FragmentResultListener
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
@@ -17,6 +19,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.MarkerOptions
 
+private const val TAG = "TouristMemoriesView"
 
 class TouristMemoriesView : Fragment(R.layout.fragment_tourist_memories_view) {
     lateinit var memoryAdapter: MemoryViewItemAdapter
@@ -30,12 +33,13 @@ class TouristMemoriesView : Fragment(R.layout.fragment_tourist_memories_view) {
         // Will get the image from the previous fragment and set it as the main image
         val img = view?.findViewById<ImageView>(R.id.memories_view_img)
         var bundle = this.arguments
-
         //parentFragmentManager.setFragmentResultListener("showMemory",this, FragmentResultListener {
         //        requestKey, result ->
             //val input = result.getSerializable("memory") as Memories
-        val input = bundle!!.getSerializable("memory") as Memories
-            val bitmap = BitmapFactory.decodeByteArray(input.image,0,input.image.size)
+        val input = bundle?.getSerializable("memory") as Memories
+        Log.i(TAG,"sent item ${input.location}")
+
+        val bitmap = BitmapFactory.decodeByteArray(input.image,0,input.image.size)
             img.setImageBitmap(bitmap)
         //})
         val recyclerV = view?.findViewById<RecyclerView>(R.id.memories_view_recycler)
@@ -46,8 +50,8 @@ class TouristMemoriesView : Fragment(R.layout.fragment_tourist_memories_view) {
             LinearLayoutManager.HORIZONTAL, false)
 
         recyclerV.setHasFixedSize(true)
-        listOfImg = ArrayList()
-        listOfImg.add(db.getMemory(1))
+        listOfImg = generateMemory().toMutableList()
+        //listOfImg.add(db.getMemory(1))
 
         memoryAdapter = MemoryViewItemAdapter(requireActivity(),listOfImg, object: MemoryViewItemAdapter.OnClickListener {
             override fun onItemClick(position: Int) {
