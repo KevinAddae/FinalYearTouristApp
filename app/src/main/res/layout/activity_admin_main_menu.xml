@@ -8,194 +8,265 @@
     tools:context=".AdminMainMenu">
 
     <LinearLayout
-        android:id="@+id/admin_Reviews"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="15dp"
-        android:gravity="center"
-        app:layout_constraintBottom_toTopOf="@+id/admin_Users"
-        app:layout_constraintEnd_toStartOf="@+id/admin_Notification"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="190dp"
-            android:layout_gravity="center">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:id="@+id/admin_Reviews"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="100dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="15dp"
                 android:gravity="center"
-                android:onClick="reviewBtnEvent"
-                android:orientation="vertical">
+                app:layout_constraintBottom_toTopOf="@+id/admin_Users"
+                app:layout_constraintEnd_toStartOf="@+id/admin_Notification"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-                <ImageView
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:background="@drawable/admin_shape"
-                    android:onClick="reviewBtnEvent"
-                    android:padding="10dp"
-                    android:src="@drawable/ic_baseline_rate_admin_review_24"
-                    tools:layout_editor_absoluteX="298dp"
-                    tools:layout_editor_absoluteY="189dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:onClick="reviewBtnEvent"
-                    android:text="Reviews" />
-
-                <View
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:layout_margin="10dp"
-                    android:background="#ededed"
-                    android:onClick="reviewBtnEvent" />
+                    android:layout_height="190dp"
+                    android:layout_gravity="center">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:onClick="reviewBtnEvent"
-                    android:text="Remove Reviews" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:onClick="reviewBtnEvent"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:background="@drawable/admin_shape"
+                            android:onClick="reviewBtnEvent"
+                            android:padding="10dp"
+                            android:src="@drawable/ic_baseline_rate_admin_review_24"
+                            tools:layout_editor_absoluteX="298dp"
+                            tools:layout_editor_absoluteY="189dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:onClick="reviewBtnEvent"
+                            android:text="Reviews" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:layout_margin="10dp"
+                            android:background="#ededed"
+                            android:onClick="reviewBtnEvent" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:onClick="reviewBtnEvent"
+                            android:text="Remove Reviews" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
 
             </LinearLayout>
 
-        </androidx.cardview.widget.CardView>
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:id="@+id/admin_Notification"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="41dp"
-        android:layout_marginBottom="30dp"
-        android:gravity="center"
-        app:layout_constraintBottom_toTopOf="@+id/admin_Users"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/admin_Reviews"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="190dp"
-            android:layout_gravity="center">
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:id="@+id/admin_Notification"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="100dp"
+                android:layout_marginEnd="41dp"
+                android:layout_marginBottom="30dp"
                 android:gravity="center"
-                android:onClick="reportBtnEvent"
-                android:orientation="vertical">
+                app:layout_constraintBottom_toTopOf="@+id/admin_Users"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/admin_Reviews"
+                app:layout_constraintTop_toTopOf="parent">
 
-                <ImageView
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:background="@drawable/admin_shape"
-                    android:onClick="reportBtnEvent"
-                    android:padding="10dp"
-                    android:src="@drawable/ic_baseline_report_24"
-                    tools:layout_editor_absoluteX="298dp"
-                    tools:layout_editor_absoluteY="189dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:onClick="reportBtnEvent"
-                    android:text="Report" />
-
-                <View
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:layout_margin="10dp"
-                    android:background="#ededed"
-                    android:onClick="reportBtnEvent" />
+                    android:layout_height="190dp"
+                    android:layout_gravity="center">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:onClick="reportBtnEvent"
-                    android:text="View Reports Users" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:onClick="reportBtnEvent"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:background="@drawable/admin_shape"
+                            android:onClick="reportBtnEvent"
+                            android:padding="10dp"
+                            android:src="@drawable/ic_baseline_report_24"
+                            tools:layout_editor_absoluteX="298dp"
+                            tools:layout_editor_absoluteY="189dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:onClick="reportBtnEvent"
+                            android:text="Report" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:layout_margin="10dp"
+                            android:background="#ededed"
+                            android:onClick="reportBtnEvent" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:onClick="reportBtnEvent"
+                            android:text="View Reports Users" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/admin_SignOut"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:gravity="center">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="190dp"
+                    android:layout_gravity="center">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:onClick="SignOutBtn"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:background="@drawable/admin_shape"
+                            android:onClick="SignOutBtn"
+                            android:padding="10dp"
+                            android:src="@drawable/ic_baseline_login_24"
+                            tools:layout_editor_absoluteX="298dp"
+                            tools:layout_editor_absoluteY="189dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:onClick="SignOutBtn"
+                            android:text="SignOut" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:layout_margin="10dp"
+                            android:background="#ededed"
+                            android:onClick="SignOutBtn" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:onClick="SignOutBtn"
+                            android:text="Go back to sign in menu" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
 
             </LinearLayout>
 
-        </androidx.cardview.widget.CardView>
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:id="@+id/admin_Users"
-        android:layout_width="330dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="41dp"
-        android:layout_marginBottom="221dp"
-        android:gravity="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/admin_Reviews">
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="190dp"
-            android:layout_gravity="center">
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:onClick="userBtnEvent"
-                android:orientation="vertical">
+                android:id="@+id/admin_Users"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:gravity="center">
 
-                <ImageView
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:background="@drawable/admin_shape"
-                    android:onClick="userBtnEvent"
-                    android:padding="10dp"
-                    android:src="@drawable/ic_baseline_admin_account_circle_24"
-                    tools:layout_editor_absoluteX="298dp"
-                    tools:layout_editor_absoluteY="189dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:onClick="userBtnEvent"
-                    android:text="Users" />
-
-                <View
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:layout_margin="10dp"
-                    android:background="#ededed"
-                    android:onClick="userBtnEvent" />
+                    android:layout_height="190dp"
+                    android:layout_gravity="center">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:onClick="userBtnEvent"
-                    android:text="Notify, View And Remove Users" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:onClick="userBtnEvent"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:background="@drawable/admin_shape"
+                            android:onClick="userBtnEvent"
+                            android:padding="10dp"
+                            android:src="@drawable/ic_baseline_admin_account_circle_24"
+                            tools:layout_editor_absoluteX="298dp"
+                            tools:layout_editor_absoluteY="189dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:onClick="userBtnEvent"
+                            android:text="Users" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:layout_margin="10dp"
+                            android:background="#ededed"
+                            android:onClick="userBtnEvent" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:onClick="userBtnEvent"
+                            android:text="Notify, View And Remove Users" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
 
             </LinearLayout>
+        </LinearLayout>
 
-        </androidx.cardview.widget.CardView>
+
 
     </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

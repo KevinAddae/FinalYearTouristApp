@@ -31,6 +31,7 @@ private const val TAG = "tourist_future_location"
 class Tourist_Future_Interest : Fragment(R.layout.fragment_tourist__future__interest) {
     lateinit var  userMapList1: ArrayList<UserMap>
     lateinit var mapAdapter: MapsAdapter
+
     /**
      * This method is called after the oncreate, overriding will give access to findviewbyId.
      * This method will also send send the listed items in the recycle view to the Display map fragment.
@@ -39,6 +40,7 @@ class Tourist_Future_Interest : Fragment(R.layout.fragment_tourist__future__inte
      */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         activity?.title = "Future Location"
         var db = activity?.let { TouristDatabase(it) }
 
@@ -46,6 +48,8 @@ class Tourist_Future_Interest : Fragment(R.layout.fragment_tourist__future__inte
         if (db != null) {
             Toast.makeText(activity,"logged in as ${db.getLastAddedTourist().username}", Toast.LENGTH_LONG).show()
         }
+
+
 
         //var temp:ArrayList<Future_location> = db!!.getFutureLocation(1)
         //var k = UserMap("Test",temp)
@@ -138,11 +142,9 @@ class Tourist_Future_Interest : Fragment(R.layout.fragment_tourist__future__inte
         if (getCallerFragment().equals("CreateMap")) {
             var bundle = this.arguments
             val input = bundle?.getSerializable("item") as UserMap
-
-            Log.i(TAG, "gotten $input}")
             for(place in input.places) {
                 var type = UserMap(input.title, arrayListOf(place))
-                db?.addFutureInterest(type)
+                //db?.addFutureInterest(type)
             }
             userMapList1.add(input)
             mapAdapter.notifyItemInserted(userMapList1.size - 1)

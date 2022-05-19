@@ -30,4 +30,9 @@ class AdminMainMenu : AppCompatActivity() {
         val i = Intent(this, AdminUserMainMenu::class.java)
         startActivity(i)
     }
+
+    fun SignOutBtn (view: View) {
+        val i = Intent(this, MainActivity::class.java)
+        startActivity(i)
+    }
 }

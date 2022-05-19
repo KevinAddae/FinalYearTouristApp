@@ -29,8 +29,8 @@ import java.io.IOException
 private const val TAG = "tourist_review_create"
 
 class Tourist_review_create : Fragment(R.layout.fragment_tourist_review_create) {
-    val PICK_IMAGE = 1
-    val imageView = view?.findViewById<ImageView>(R.id.createReview_uploadedPicture)
+    lateinit var imageView: ImageView
+    val GALLERY_REQUEST = 100
 
     //private var db = TouristDatabase(requireActivity())
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -49,7 +49,7 @@ class Tourist_review_create : Fragment(R.layout.fragment_tourist_review_create) 
 //                imageView?.setImageBitmap(bitmapImage)
 //            }
 //        }
-
+        imageView = view?.findViewById<ImageView>(R.id.createReview_uploadedPicture)
         val uploadBtn = view?.findViewById<Button>(R.id.createReview_UploadPictureBtn)
 
         /**
@@ -57,10 +57,10 @@ class Tourist_review_create : Fragment(R.layout.fragment_tourist_review_create) 
          */
         uploadBtn?.setOnClickListener {
             Log.i(TAG, "btn press")
-            val galleryIntent = Intent(Intent.ACTION_PICK)
+            val galleryIntent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
             galleryIntent.type = "image/*"
             //returns the data selected
-            startActivityForResult(galleryIntent,PICK_IMAGE)
+            startActivityForResult(galleryIntent,GALLERY_REQUEST)
            // resultLauncher.launch(galleryIntent)
             Log.i(TAG, "Go to Gallery")
         }
@@ -115,16 +115,21 @@ class Tourist_review_create : Fragment(R.layout.fragment_tourist_review_create) 
 
 
     }
+    @SuppressLint("RestrictedApi")
     @Override
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if (resultCode == Activity.RESULT_OK && requestCode == PICK_IMAGE) {
+        if (requestCode==GALLERY_REQUEST && resultCode == RESULT_OK) {
+            val imageView = view?.findViewById<ImageView>(R.id.createReview_uploadedPicture)
             val selectedImage = data?.data
-            val bitmapImage = MediaStore.Images.Media.getBitmap(requireActivity().contentResolver, selectedImage)
-            imageView?.setImageBitmap(bitmapImage)
+            imageView?.setImageURI(selectedImage)
+            //val bitmapImage = MediaStore.Images.Media.getBitmap(requireActivity().contentResolver, selectedImage)
+            //imageView?.setImageBitmap(bitmapImage)
+            Log.i(TAG, "IMG gotten ${selectedImage.toString()}")
 
         }
 
     }
+
 }

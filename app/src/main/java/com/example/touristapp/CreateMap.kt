@@ -161,26 +161,25 @@ class CreateMap : Fragment() {
 
                 Log.i(TAG,"gotten $places")
                 var userM = UserMap("awd", places)
-                // bundle to send to another fragment
-                var bundle = Bundle()
                 //collect bundle from previous fragment
                 var collectBund = this.arguments
                 val title = collectBund?.getString("title") as String
-
                 userM.title = title
+
 
                 Log.i(TAG,"usermap is: ${userM.title}")
                 Log.i(TAG,"usermap is: ${userM.places[0].name}")
 
-
-                bundle.putSerializable("item", userM)
+                // bundle to send to another fragment
+                var bundle = Bundle()
                 val fragment = Tourist_Future_Interest()
+                bundle.putSerializable("item", userM)
                 fragment.arguments = bundle
 
             if (userM != null) {
                 var fragmentManager = requireActivity().supportFragmentManager
                 var fragmentTrasaction = fragmentManager.beginTransaction()
-                fragmentTrasaction.replace(R.id.frameLayout, Tourist_Future_Interest())
+                fragmentTrasaction.replace(R.id.frameLayout, fragment)
                 fragmentTrasaction.addToBackStack("CreateMap")
                 fragmentTrasaction.commit()
                 }
