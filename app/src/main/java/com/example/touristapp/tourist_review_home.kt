@@ -60,7 +60,7 @@ class tourist_review_home : Fragment(R.layout.fragment_tourist_review_home) {
                 bundle.putSerializable("review",reviews[position])
                 val fragment = display_review()
                 fragment.arguments = bundle
-                parentFragmentManager.setFragmentResult("showRev",bundle)
+                //parentFragmentManager.setFragmentResult("showRev",bundle)
 
                 //This section will send the user to display_review() fragment
                 var fragmentManager = activity!!.supportFragmentManager

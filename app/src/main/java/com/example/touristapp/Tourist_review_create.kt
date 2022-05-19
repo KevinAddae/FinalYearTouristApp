@@ -13,7 +13,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.activity.result.contract.ActivityResultContracts
+//import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.graphics.drawable.toBitmap
 import androidx.media.MediaBrowserServiceCompat.RESULT_OK
 import com.example.touristapp.Model.Review
@@ -38,30 +38,30 @@ class Tourist_review_create : Fragment(R.layout.fragment_tourist_review_create) 
         /**
          *  returns data from the gallery intent and uses the data
          */
-        var resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-            if (result.resultCode == Activity.RESULT_OK) {
-                val data: Intent? = result.data
-                val selectedImage = data?.data
-                // converts the image type from Uri to bitmap
-                val bitmapImage = MediaStore.Images.Media.getBitmap(requireActivity().contentResolver, selectedImage)
-                // sets the image to the image view
-                imageView?.setImageBitmap(bitmapImage)
-            }
-        }
-
-        val uploadBtn = view?.findViewById<Button>(R.id.createReview_UploadPictureBtn)
-
-        /**
-         * When the Upload button is pressed the user is sent to the gallery
-         */
-        uploadBtn?.setOnClickListener {
-            Log.i(TAG, "btn press")
-            val galleryIntent = Intent(Intent.ACTION_PICK)
-            galleryIntent.type = "image/*"
-            //returns the data selected
-            resultLauncher.launch(galleryIntent)
-            Log.i(TAG, "Go to Gallery")
-        }
+//        var resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+//            if (result.resultCode == Activity.RESULT_OK) {
+//                val data: Intent? = result.data
+//                val selectedImage = data?.data
+//                // converts the image type from Uri to bitmap
+//                val bitmapImage = MediaStore.Images.Media.getBitmap(requireActivity().contentResolver, selectedImage)
+//                // sets the image to the image view
+//                imageView?.setImageBitmap(bitmapImage)
+//            }
+//        }
+//
+//        val uploadBtn = view?.findViewById<Button>(R.id.createReview_UploadPictureBtn)
+//
+//        /**
+//         * When the Upload button is pressed the user is sent to the gallery
+//         */
+//        uploadBtn?.setOnClickListener {
+//            Log.i(TAG, "btn press")
+//            val galleryIntent = Intent(Intent.ACTION_PICK)
+//            galleryIntent.type = "image/*"
+//            //returns the data selected
+//            resultLauncher.launch(galleryIntent)
+//            Log.i(TAG, "Go to Gallery")
+//        }
 
         val confirmBtn = view?.findViewById<Button>(R.id.createReview_confirmBtn)
         val title = view?.findViewById<EditText>(R.id.createReview_Title)?.text.toString()

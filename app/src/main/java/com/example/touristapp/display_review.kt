@@ -11,10 +11,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.AlertDialogLayout
 import androidx.appcompat.widget.AppCompatButton
-import androidx.fragment.app.FragmentResultListener
+//import androidx.fragment.app.FragmentResultListener
 import com.example.touristapp.Model.Report
 import com.example.touristapp.Model.Review
 import com.example.touristapp.Model.TouristDatabase
@@ -46,10 +45,11 @@ class display_review : Fragment(R.layout.fragment_display_review) {
          * ParentFragmentManager collects the data sent from the
          * tourist_display_review fragment
          */
-        parentFragmentManager.setFragmentResultListener("showRev",this, FragmentResultListener {
-                requestKey, result ->
+//        parentFragmentManager.setFragmentResultListener("showRev",this, FragmentResultListener {
+//                requestKey, result ->
 
-            val input = result.getSerializable("review") as Review
+            //val input = result.getSerializable("review") as Review
+            val input = Review("","","",2.0f,"", byteArrayOf(),1,1)
             title?.text = input.title
             description?.text = input.description
             rating?.rating = input.rating
@@ -64,7 +64,7 @@ class display_review : Fragment(R.layout.fragment_display_review) {
             catch (e : NullPointerException) {
                 Toast.makeText(activity,"No image",Toast.LENGTH_LONG).show()
             }
-        })
+ //       })
         /**
          * returns the user to the previous fragment
          */
@@ -83,7 +83,7 @@ class display_review : Fragment(R.layout.fragment_display_review) {
          */
         reportBtn?.setOnClickListener {
             val placeUserInfo = LayoutInflater.from(activity).inflate(R.layout.dialog_report_review,null)
-            val dialog = AlertDialog.Builder(activity)
+            val dialog = android.app.AlertDialog.Builder(activity)
                 .setTitle("Report Review")
                 .setView(placeUserInfo)
                 .setNegativeButton("Cancel", null)
@@ -98,7 +98,7 @@ class display_review : Fragment(R.layout.fragment_display_review) {
                 val selectedId = rgroup.checkedRadioButtonId
                 val choice: RadioButton = view?.findViewById(selectedId)
                 val desc = view?.findViewById<EditText>(R.id.reportReview_description)
-                when ()
+                //when ()
                 val report = Report(item.username, desc.toString(),choice.toString(),1,item.userId)
                 db.addReport(report)
                 dialog.dismiss()

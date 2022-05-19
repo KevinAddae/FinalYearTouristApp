@@ -9,7 +9,7 @@ import android.widget.EditText
 import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentResultListener
+//import androidx.fragment.app.FragmentResultListener
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.touristapp.Model.Future_location
@@ -85,7 +85,7 @@ class Tourist_Future_Interest : Fragment(R.layout.fragment_tourist__future__inte
                 bundle.putSerializable("list", userMapList1[position])
                 val fragment = DisplayMap()
                 fragment.arguments = bundle
-                parentFragmentManager.setFragmentResult("futureMark",bundle)
+                //parentFragmentManager.setFragmentResult("futureMark",bundle)
 
                 var fragmentManager = activity!!.supportFragmentManager
                 var fragmentTransaction = fragmentManager.beginTransaction()
@@ -108,7 +108,7 @@ class Tourist_Future_Interest : Fragment(R.layout.fragment_tourist__future__inte
                             bundle.putSerializable("MarkList", userMapList1[position])
                             val fragment = FutureInterestSingleMarkers()
                             fragment.arguments = bundle
-                            parentFragmentManager.setFragmentResult("singleMark",bundle)
+                            //parentFragmentManager.setFragmentResult("singleMark",bundle)
 
                             var fragmentManager = activity!!.supportFragmentManager
                             var fragmentTransaction = fragmentManager.beginTransaction()
@@ -136,21 +136,21 @@ class Tourist_Future_Interest : Fragment(R.layout.fragment_tourist__future__inte
          * checks the name of the previous fragment as a condition
          * casts the information sent from the create map fragment
          */
-        if (getCallerFragment().equals("CreateMap")) {
-            parentFragmentManager.setFragmentResultListener(
-                "saveMark", this, FragmentResultListener { requestKey, result ->
-
-                    val input = result.getSerializable("choice") as UserMap
-                    Log.i(TAG, "gotten $input}")
-                    for(place in input.places) {
-                        var type = UserMap(input.title, arrayListOf(place))
-                        db.addFutureInterest(type)
-                    }
-                    userMapList1.add(input)
-                    mapAdapter.notifyItemInserted(userMapList1.size - 1)
-                })
-
-        }
+//        if (getCallerFragment().equals("CreateMap")) {
+//            parentFragmentManager.setFragmentResultListener(
+//                "saveMark", this, FragmentResultListener { requestKey, result ->
+//
+//                    val input = result.getSerializable("choice") as UserMap
+//                    Log.i(TAG, "gotten $input}")
+//                    for(place in input.places) {
+//                        var type = UserMap(input.title, arrayListOf(place))
+//                        db.addFutureInterest(type)
+//                    }
+//                    userMapList1.add(input)
+//                    mapAdapter.notifyItemInserted(userMapList1.size - 1)
+//                })
+//
+//        }
     }
 
     /**
@@ -186,7 +186,7 @@ class Tourist_Future_Interest : Fragment(R.layout.fragment_tourist__future__inte
             bundle.putString("title", title)
             val fragment = DisplayMap()
             fragment.arguments = bundle
-            parentFragmentManager.setFragmentResult("userMapTitle",bundle)
+                //parentFragmentManager.setFragmentResult("userMapTitle",bundle)
 
             var fragmentManager = requireActivity().supportFragmentManager
             var fragmentTrasaction = fragmentManager.beginTransaction()

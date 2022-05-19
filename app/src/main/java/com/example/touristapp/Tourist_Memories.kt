@@ -14,7 +14,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
+//import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.touristapp.Model.Memories
@@ -32,8 +32,8 @@ class Tourist_Memories : Fragment(R.layout.fragment_tourist__memories) {
         super.onViewCreated(view, savedInstanceState)
         var db = activity?.let { TouristDatabase(it) }
 
-        memory = ArrayList()
-        memory.add(db!!.getMemory(1))
+        memory = generateMemory().toMutableList()
+        //memory.add(db!!.getMemory(1))
 
         val recycleView = view?.findViewById<RecyclerView>(R.id.memories_recycleV)
         recycleView.layoutManager = LinearLayoutManager(activity)
@@ -44,7 +44,7 @@ class Tourist_Memories : Fragment(R.layout.fragment_tourist__memories) {
                 bundle.putSerializable("memory",memory[position])
                 val fragment = TouristMemoriesView()
                 fragment.arguments = bundle
-                parentFragmentManager.setFragmentResult("showMemory",bundle)
+                //parentFragmentManager.setFragmentResult("showMemory",bundle)
 
                 //This section will send the user to display_review() fragment
                 var fragmentManager = activity!!.supportFragmentManager
@@ -63,31 +63,31 @@ class Tourist_Memories : Fragment(R.layout.fragment_tourist__memories) {
 
         })
         recycleView.adapter = memoryAdapter
-        val addBtn = view?.findViewById<Button>(R.id.memories_addImgBtn)
-        var resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-            if (result.resultCode == Activity.RESULT_OK) {
-                val data: Intent? = result.data
-                val selectedImage = data?.data
-                // converts the image type from Uri to bitmap
-                val bitmapImage = MediaStore.Images.Media.getBitmap(requireActivity().contentResolver, selectedImage)
-                // converts bitmap to ByteArray
-                val stream = ByteArrayOutputStream()
-                bitmapImage.compress(Bitmap.CompressFormat.PNG,90,stream)
-                val image = stream.toByteArray()
-                // creates pop up that will create memories object and adds it to the list and update the adapter
-                showAlertDialog(image)
-
-            }
-        }
-
-        addBtn.setOnClickListener {
-            Log.i(TAG, "btn press")
-            val galleryIntent = Intent(Intent.ACTION_PICK)
-            galleryIntent.type = "image/*"
-            //returns the data selected
-            resultLauncher.launch(galleryIntent)
-            Log.i(TAG, "Go to Gallery")
-        }
+//        val addBtn = view?.findViewById<Button>(R.id.memories_addImgBtn)
+//        var resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+//            if (result.resultCode == Activity.RESULT_OK) {
+//                val data: Intent? = result.data
+//                val selectedImage = data?.data
+//                // converts the image type from Uri to bitmap
+//                val bitmapImage = MediaStore.Images.Media.getBitmap(requireActivity().contentResolver, selectedImage)
+//                // converts bitmap to ByteArray
+//                val stream = ByteArrayOutputStream()
+//                bitmapImage.compress(Bitmap.CompressFormat.PNG,90,stream)
+//                val image = stream.toByteArray()
+//                // creates pop up that will create memories object and adds it to the list and update the adapter
+//                showAlertDialog(image)
+//
+//            }
+//        }
+//
+//        addBtn.setOnClickListener {
+//            Log.i(TAG, "btn press")
+//            val galleryIntent = Intent(Intent.ACTION_PICK)
+//            galleryIntent.type = "image/*"
+//            //returns the data selected
+//            resultLauncher.launch(galleryIntent)
+//            Log.i(TAG, "Go to Gallery")
+//        }
     }
 
     /**
@@ -123,6 +123,7 @@ class Tourist_Memories : Fragment(R.layout.fragment_tourist__memories) {
 
         }
     }
+
 
     private fun generateMemory():List<Memories> {
         return listOf(

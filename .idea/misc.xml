@@ -13,24 +13,42 @@
         <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/drawable/ic_baseline_map_24.xml" value="0.3828125" />
         <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/drawable/ic_baseline_rate_review_24.xml" value="0.3828125" />
         <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/drawable/ic_baseline_settings_24.xml" value="0.3828125" />
+        <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/drawable/notification_border_background1.xml" value="0.3828125" />
         <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/drawable/rounded_corner.xml" value="0.3828125" />
+        <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/layout/activity_guest_main_menu.xml" value="0.28940217391304346" />
         <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/layout/activity_main.xml" value="0.2957427536231884" />
         <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/layout/activity_registration.xml" value="0.2957427536231884" />
         <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/layout/activity_registration_part2.xml" value="0.2957427536231884" />
         <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/layout/activity_tourist_main_menu.xml" value="0.2957427536231884" />
+        <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/layout/dialog_create_map_title.xml" value="0.28940217391304346" />
         <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/layout/dialog_create_marker.xml" value="0.2957427536231884" />
         <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/layout/dialog_create_memory.xml" value="0.2957427536231884" />
+        <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/layout/dialog_report_review.xml" value="0.28940217391304346" />
         <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/layout/fragment_create_map.xml" value="0.2957427536231884" />
         <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/layout/fragment_display_map.xml" value="0.2957427536231884" />
         <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/layout/fragment_display_review.xml" value="0.2957427536231884" />
         <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/layout/fragment_future_interest_single_markers.xml" value="0.2957427536231884" />
+        <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/layout/fragment_guest_home.xml" value="0.28940217391304346" />
         <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/layout/fragment_tourist__future__interest.xml" value="0.2957427536231884" />
         <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/layout/fragment_tourist__home.xml" value="0.2957427536231884" />
         <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/layout/fragment_tourist__memories.xml" value="0.2957427536231884" />
+        <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/layout/fragment_tourist_memories_view.xml" value="0.2957427536231884" />
         <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/layout/fragment_tourist_review_create.xml" value="0.2957427536231884" />
         <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/layout/fragment_tourist_review_home.xml" value="0.2957427536231884" />
+        <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/layout/memories_singleitem.xml" value="0.28940217391304346" />
+        <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/layout/memories_view_singleitem.xml" value="0.28940217391304346" />
         <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/layout/nav_header.xml" value="0.2957427536231884" />
+        <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/layout/recycle_view_interaction_animation.xml" value="0.28940217391304346" />
+        <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/layout/report_single_item.xml" value="0.75" />
+        <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/layout/review_single_item.xml" value="0.28940217391304346" />
+        <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/layout/single_item_markers.xml" value="0.28940217391304346" />
+        <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/layout/tourist_home_review_single_item.xml" value="0.28940217391304346" />
+        <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/layout/tourist_single_item.xml" value="0.28940217391304346" />
+        <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/menu/admin_report_option.xml" value="0.36666666666666664" />
+        <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/menu/admin_user_recycler_options.xml" value="0.36666666666666664" />
+        <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/menu/guest_nav_menu.xml" value="0.36666666666666664" />
         <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/menu/nav_menu.xml" value="0.36666666666666664" />
+        <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/menu/recycler_options.xml" value="0.36666666666666664" />
       </map>
     </option>
   </component>

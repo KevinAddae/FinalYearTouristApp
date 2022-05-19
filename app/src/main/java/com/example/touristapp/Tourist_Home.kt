@@ -51,7 +51,7 @@ class Tourist_Home : Fragment(R.layout.fragment_tourist__home) {
                 bundle.putSerializable("review",reviews[position])
                 val fragment = display_review()
                 fragment.arguments = bundle
-                parentFragmentManager.setFragmentResult("showRev",bundle)
+                //parentFragmentManager.setFragmentResult("showRev",bundle)
 
                 //This section will send the user to display_review() fragment
                 var fragmentManager = activity!!.supportFragmentManager
@@ -88,7 +88,7 @@ class Tourist_Home : Fragment(R.layout.fragment_tourist__home) {
                 bundle.putSerializable("memory",memory[position])
                 val fragment = display_review()
                 fragment.arguments = bundle
-                parentFragmentManager.setFragmentResult("showMemory",bundle)
+                //parentFragmentManager.setFragmentResult("showMemory",bundle)
 
                 //This section will send the user to display_review() fragment
                 var fragmentManager = activity!!.supportFragmentManager
