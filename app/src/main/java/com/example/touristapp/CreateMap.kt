@@ -11,7 +11,7 @@ import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.Toast
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.FragmentResultListener
+//import androidx.fragment.app.FragmentResultListener
 import com.example.touristapp.Model.Future_location
 import com.example.touristapp.Model.UserMap
 
@@ -155,16 +155,17 @@ class CreateMap : Fragment() {
 
                 Log.i(TAG,"gotten $places")
                 var userM = UserMap("awd", places)
-                parentFragmentManager.setFragmentResultListener("userMapTitle",this, FragmentResultListener {
-                        requestKey, result ->
-                    userM.title = result.getString("title").toString()
-                })
+                //parentFragmentManager.setFragmentResultListener("userMapTitle",this, FragmentResultListener {
+                //        requestKey, result ->
+                //    userM.title = result.getString("title").toString()
+                userM.title = "test"
+                //})
 
                 var bundle = Bundle()
                 bundle.putSerializable("choice", userM)
                 val fragment = Tourist_Future_Interest()
                 fragment.arguments = bundle
-                parentFragmentManager.setFragmentResult("saveMark", bundle)
+                //parentFragmentManager.setFragmentResult("saveMark", bundle)
 
 
                 var fragmentManager = requireActivity().supportFragmentManager

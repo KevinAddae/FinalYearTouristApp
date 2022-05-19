@@ -3,18 +3,29 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/drawable/admin_shape.xml" value="0.3828125" />
         <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/drawable/btn_border.xml" value="0.3828125" />
         <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/drawable/btn_border_login_screen.xml" value="0.3828125" />
         <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/drawable/ic_baseline_account_circle_24.xml" value="0.3828125" />
+        <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/drawable/ic_baseline_admin_account_circle_24.xml" value="0.3828125" />
         <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/drawable/ic_baseline_email_24.xml" value="0.3828125" />
         <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/drawable/ic_baseline_favorite_24.xml" value="0.3828125" />
         <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.3828125" />
         <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/drawable/ic_baseline_lock_24.xml" value="0.3828125" />
         <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/drawable/ic_baseline_map_24.xml" value="0.3828125" />
+        <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/drawable/ic_baseline_rate_admin_review_24.xml" value="0.3828125" />
         <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/drawable/ic_baseline_rate_review_24.xml" value="0.3828125" />
+        <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/drawable/ic_baseline_report_24.xml" value="0.3828125" />
+        <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.3828125" />
         <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/drawable/ic_baseline_settings_24.xml" value="0.3828125" />
         <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/drawable/notification_border_background1.xml" value="0.3828125" />
         <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/drawable/rounded_corner.xml" value="0.3828125" />
+        <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/layout/activity_admin_main_menu.xml" value="0.28940217391304346" />
+        <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/layout/activity_admin_notification.xml" value="0.28940217391304346" />
+        <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/layout/activity_admin_report_menu.xml" value="0.28940217391304346" />
+        <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/layout/activity_admin_review.xml" value="0.28940217391304346" />
+        <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/layout/activity_admin_review_view.xml" value="0.28940217391304346" />
+        <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/layout/activity_admin_user_main_menu.xml" value="0.28940217391304346" />
         <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/layout/activity_guest_main_menu.xml" value="0.28940217391304346" />
         <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/layout/activity_main.xml" value="0.2957427536231884" />
         <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/layout/activity_registration.xml" value="0.2957427536231884" />
@@ -45,6 +56,7 @@
         <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/layout/tourist_home_review_single_item.xml" value="0.28940217391304346" />
         <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/layout/tourist_single_item.xml" value="0.28940217391304346" />
         <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/menu/admin_report_option.xml" value="0.36666666666666664" />
+        <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/menu/admin_search.xml" value="0.36666666666666664" />
         <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/menu/admin_user_recycler_options.xml" value="0.36666666666666664" />
         <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/menu/guest_nav_menu.xml" value="0.36666666666666664" />
         <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/menu/nav_menu.xml" value="0.36666666666666664" />

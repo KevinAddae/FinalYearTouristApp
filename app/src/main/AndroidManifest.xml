@@ -16,6 +16,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TouristApp">
         <activity
+            android:name=".AdminNotification"
+            android:exported="true" />
+        <activity
+            android:name=".AdminUserMainMenu"
+            android:exported="true" />
+        <activity
+            android:name=".AdminReportMenu"
+            android:exported="true" />
+        <activity
+            android:name=".AdminReviewView"
+            android:exported="true" />
+        <activity
+            android:name=".AdminReview"
+            android:exported="true" />
+        <activity
+            android:name=".AdminMainMenu"
+            android:exported="true" />
+        <activity
             android:name=".Guest_MainMenu"
             android:exported="true" />
         <!--
