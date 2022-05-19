@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <EditText
+        android:id="@+id/marker_etTitle"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="13dp"
+        android:hint="Title"
+        android:padding="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/marker_etDescription"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/marker_etDescription"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginBottom="9dp"
+        android:hint="Description"
+        android:padding="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/marker_etTypeOfLocation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/marker_etTitle" />
+
+    <EditText
+        android:id="@+id/marker_etTypeOfLocation"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginBottom="17dp"
+        android:hint="Type"
+        android:padding="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/marker_etCountry"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/marker_etDescription" />
+
+    <EditText
+        android:id="@+id/marker_etCountry"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="11dp"
+        android:layout_marginBottom="13dp"
+        android:hint="Country"
+        android:padding="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/etMarker_TownCity"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.55"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/marker_etTypeOfLocation" />
+
+    <EditText
+        android:id="@+id/etMarker_TownCity"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="11dp"
+        android:layout_marginBottom="13dp"
+        android:hint="Town or City"
+        android:padding="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/marker_cbBooked"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.55"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/marker_etCountry" />
+
+    <CheckBox
+        android:id="@+id/marker_cbBooked"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:padding="10dp"
+        android:text="Booked"
+        android:textSize="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.183"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etMarker_TownCity" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

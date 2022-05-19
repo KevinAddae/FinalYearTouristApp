@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Registration_part2">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_marginBottom="26dp"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="Create An Account"
+        android:textSize="37dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.025" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="353dp"
+        android:layout_height="247dp"
+        android:layout_marginStart="27dp"
+        android:layout_marginEnd="31dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.316">
+
+
+        <EditText
+            android:id="@+id/regi_Username"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:hint="Username"
+            android:padding="10dp"
+            android:textSize="25dp" />
+
+        <EditText
+            android:id="@+id/regi_password"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:padding="10dp"
+            android:hint="Password"
+            android:textSize="25dp" />
+
+        <EditText
+            android:id="@+id/regi_verifyPass"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:padding="10dp"
+            android:hint="Verify Password"
+            android:textSize="25dp" />
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button"
+        android:layout_width="349dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="140dp"
+        android:layout_marginEnd="141dp"
+        android:background="@drawable/btn_border"
+        android:gravity="center"
+        android:onClick="registerNowBtnEvent"
+        android:text="Register Now"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.515"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.803" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
