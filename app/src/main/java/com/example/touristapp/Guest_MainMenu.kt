@@ -1,5 +1,6 @@
 package com.example.touristapp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -42,6 +43,16 @@ class Guest_MainMenu : AppCompatActivity() {
                 R.id.guestNav_map -> replaceFragement(DisplayMap(), it.title.toString())
 
                 R.id.guestNav_review -> replaceFragement(tourist_review_home(),it.title.toString())
+
+                R.id.guestNav_Signin -> {
+                    var i = Intent(this,MainActivity::class.java)
+                    startActivity(i)
+                }
+
+                R.id.guestNav_createAccount -> {
+                    var i = Intent(this,Registration::class.java)
+                    startActivity(i)
+                }
             }
             true
         }

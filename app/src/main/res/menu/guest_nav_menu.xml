@@ -39,10 +39,6 @@
                     android:icon="@drawable/ic_baseline_account_circle_24"
                     android:title="Login"/>
 
-                <item
-                    android:id="@+id/guestNav_setting"
-                    android:icon="@drawable/ic_baseline_settings_24"
-                    android:title="Settings"/>
 
             </group>
 

@@ -19,7 +19,8 @@
 
         <item
             android:id="@+id/nav_future_location"
-            android:title="Future Location"/>
+            android:title="Future Location"
+            android:icon="@drawable/ic_baseline_bookmark_24"/>
         <item
             android:id="@+id/nav_map"
             android:icon="@drawable/ic_baseline_map_24"
@@ -34,23 +35,6 @@
 
     <item android:title="Profile">
 
-        <menu>
-
-            <group>
-
-                <item
-                    android:id="@+id/nav_account"
-                    android:icon="@drawable/ic_baseline_account_circle_24"
-                    android:title="Account"/>
-
-                <item
-                    android:id="@+id/nav_setting"
-                    android:icon="@drawable/ic_baseline_settings_24"
-                    android:title="Settings"/>
-
-            </group>
-
-        </menu>
 
     </item>
 
@@ -59,9 +43,7 @@
         <menu>
 
             <group>
-                <item
-                    android:id="@+id/nav_about"
-                    android:title="App About"/>
+
 
                 <item
                     android:id="@+id/nav_signout"

@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.touristapp.Model.Review
 import com.example.touristapp.Model.ReviewAdapter
 import com.example.touristapp.Model.TouristDatabase
+import com.example.touristapp.Model.UserMap
 import java.io.FileNotFoundException
 import java.io.IOException
 import java.net.URI
@@ -40,9 +41,11 @@ class tourist_review_home : Fragment(R.layout.fragment_tourist_review_home) {
         super.onViewCreated(view, savedInstanceState)
         var db = activity?.let { TouristDatabase(it) }
 
-
+        //reviews = db!!.getTextReview()
         reviews = ArrayList()
-        reviews.add(db!!.getReview(1))
+        reviews.add(db!!.getImageReview(1))
+        //reviews = ArrayList()
+        //reviews.add(db!!.getReview(1))
 
 
         var reviewList = getView()?.findViewById<RecyclerView>(R.id.review_listOfReviews)
@@ -83,6 +86,15 @@ class tourist_review_home : Fragment(R.layout.fragment_tourist_review_home) {
             confirmBtn.visibility = View.GONE
         }
 
+        if (getCallerFragment().equals("Tourist_review_create")) {
+            var bundle = this.arguments
+            val input = bundle?.getSerializable("revItem") as Review
+
+            reviews.add(input)
+            reviewAdapter.notifyItemInserted(reviews.size - 1)
+
+
+        }
         confirmBtn?.setOnClickListener {
             var fragmentManager = requireActivity().supportFragmentManager
             var fragmentTransaction = fragmentManager.beginTransaction()
@@ -95,6 +107,14 @@ class tourist_review_home : Fragment(R.layout.fragment_tourist_review_home) {
             fragmentTransaction.addToBackStack("Tourist_review_create")
             fragmentTransaction.commit()
         }
+    }
+    /**
+     * gets the name of the last fragment
+     */
+    private fun getCallerFragment(): String? {
+        val fm = fragmentManager
+        val count = requireFragmentManager().backStackEntryCount
+        return fm!!.getBackStackEntryAt(count - 1).name
     }
 
     private fun generateReview():List<Review> {

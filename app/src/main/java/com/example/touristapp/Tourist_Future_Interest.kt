@@ -49,29 +49,8 @@ class Tourist_Future_Interest : Fragment(R.layout.fragment_tourist__future__inte
             Toast.makeText(activity,"logged in as ${db.getLastAddedTourist().username}", Toast.LENGTH_LONG).show()
         }
 
+        userMapList1 = ArrayList(db!!.getUserMapTitle(1))
 
-
-        //var temp:ArrayList<Future_location> = db!!.getFutureLocation(1)
-        //var k = UserMap("Test",temp)
-//        userMapList1 = ArrayList()
-//        if (temp.size != 0) {
-//            for (i in temp.indices) {
-//                if (i + 1 != temp.size) {
-//                    if (userMapList1.contains(temp[i])) {
-//                        userMapList1[userMapList1.indexOf(temp[i])].places.addAll(temp[i].places)
-//                    } else if (!userMapList1.contains(temp[i]))
-//                        userMapList1.add(temp[i])
-//                }
-//            }
-//        }
-
-        //    userMapList1 = generateSample()
-        // set the layout manager
-        userMapList1 = generateSample()
-        //userMapList1.add(db!!.getFutureLocation(1))
-//        temp.forEach {
-//            userMapList1.add(it)
-//        }
         var maps = getView()?.findViewById<RecyclerView>(R.id.rvMaps)
 
         if (maps != null) {
@@ -144,7 +123,7 @@ class Tourist_Future_Interest : Fragment(R.layout.fragment_tourist__future__inte
             val input = bundle?.getSerializable("item") as UserMap
             for(place in input.places) {
                 var type = UserMap(input.title, arrayListOf(place))
-                //db?.addFutureInterest(type)
+                db?.addFutureInterest(type)
             }
             userMapList1.add(input)
             mapAdapter.notifyItemInserted(userMapList1.size - 1)

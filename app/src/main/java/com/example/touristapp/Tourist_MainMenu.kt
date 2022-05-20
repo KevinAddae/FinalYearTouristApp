@@ -51,6 +51,11 @@ class Tourist_MainMenu : AppCompatActivity() {
                 R.id.nav_review -> replaceFragement(tourist_review_home(),it.title.toString())
 
                 R.id.nav_memories -> replaceFragement(Tourist_Memories(), it.title.toString())
+
+                R.id.nav_signout -> {
+                    var i = Intent(this,MainActivity::class.java)
+                    startActivity(i)
+                }
             }
             true
         }

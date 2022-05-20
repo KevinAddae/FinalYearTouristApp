@@ -229,7 +229,7 @@ class TouristDatabase(context: Context) : SQLiteOpenHelper(context,DatabaseName,
 
     fun getMemory(tId: Int): Memories  {
         val db: SQLiteDatabase = this.readableDatabase
-        val sqlStatement = "SELECT * FROM $memoriesTableName WHERE $columnMemoriesId == $tId"
+        val sqlStatement = "SELECT * FROM $memoriesTableName WHERE $columnMemoriesUserId == $tId"
 
         val cursor: Cursor = db.rawQuery(sqlStatement, null)
         if  (cursor.moveToFirst()){
@@ -337,49 +337,72 @@ class TouristDatabase(context: Context) : SQLiteOpenHelper(context,DatabaseName,
 
         return reviewList
     }
-
-    fun getReview(rid:Int): Review {
-        val reviewList = ArrayList<Review>()
+    /**
+     * This will collect everything from the review table and return all of the reviews in an arraylist
+     */
+    fun getImageReview(tId: Int): Review {
         val db: SQLiteDatabase = this.readableDatabase
-        val sqlStatement = " SELECT * FROM $reviewTableName WHERE $columnReviewUserId == $rid"
-
+        val sqlStatement = "SELECT $columnReviewImage FROM $reviewTableName WHERE $columnReviewId == $tId"
         val cursor: Cursor = db.rawQuery(sqlStatement,null)
 
-        if (cursor.moveToFirst()){
-            db.close()
+        if (cursor.moveToFirst())
+            do{
+                val image: ByteArray = cursor.getBlob(0)
 
-            val title: String = cursor.getString(0)
-            val description: String = cursor.getString(1)
-            val rating: Float = cursor.getFloat(2)
-            val countryReview: String = cursor.getString(3)
-            val image: ByteArray = cursor.getBlob(4)
-            val username: String = cursor.getString(5)
-            val reviewId: Int = cursor.getInt(6)
-            val userid: Int = cursor.getInt(7)
 
-            val review = Review(username,title,description,rating,countryReview,image,reviewId,userid)
+                val review = Review("username","title","description",2.0f,"countryReview",image,1,1)
+            } while (cursor.moveToNext())
 
-            return review
-        }else {
 
-            db.close()
+        cursor.close()
+        db.close()
 
-            return Review(
-                "cant get", "cant get", "cant get", 0.0f, "cant get", byteArrayOf(),
-                1, 1
-            )
-        }
+        return Review("username","title","description",2.0f,"countryReview",
+            byteArrayOf(),1,1)
+    }
+
+    fun getTextReview(): ArrayList<Review> {
+        val reviewList = ArrayList<Review>()
+        val db: SQLiteDatabase = this.readableDatabase
+        val sqlStatement =
+            "SELECT $columnReviewTitle, $columnReviewDescription, $columnReviewRating, $columnReviewCountry, $columnReviewUsername, $columnReviewId, $columnReviewUserId FROM $reviewTableName"
+
+        val cursor: Cursor = db.rawQuery(sqlStatement, null)
+
+        if (cursor.moveToFirst())
+            do {
+                val title: String = cursor.getString(0)
+                val description: String = cursor.getString(1)
+                val rating: Float = cursor.getFloat(2)
+                val countryReview: String = cursor.getString(3)
+                val username: String = cursor.getString(4)
+                val reviewId: Int = cursor.getInt(5)
+                val userid: Int = cursor.getInt(6)
+
+                val review = Review(
+                    username, title, description, rating, countryReview,
+                    byteArrayOf(), reviewId, userid
+                )
+
+                reviewList.add(review)
+            } while (cursor.moveToNext())
+
+        cursor.close()
+        db.close()
+
+        return reviewList
     }
 
 
-    fun getFutureLocation(tId: Int): UserMap  {
+    fun getFutureLocation(tId: Int): ArrayList<UserMap>  {
         val db: SQLiteDatabase = this.readableDatabase
-        val sqlStatement = "SELECT * FROM $touristTableName WHERE $column_UserID == $tId"
+        val sqlStatement = "SELECT * FROM $futureInterestTableName WHERE $columnUserId == $tId"
 
         val cursor: Cursor = db.rawQuery(sqlStatement, null)
         var futurelocal = ArrayList<Future_location>()
-        val userM = UserMap("",futurelocal)
+        val userM = UserMap("mom",futurelocal)
         var userMList = ArrayList<UserMap>()
+
         if (cursor.moveToFirst()) {
             do {
                 val name: String = cursor.getString(0)
@@ -387,22 +410,46 @@ class TouristDatabase(context: Context) : SQLiteOpenHelper(context,DatabaseName,
                 val cityTown: String = cursor.getString(2)
                 val desc: String = cursor.getString(3)
                 val booked: String = cursor.getString(4)
+                val userMTitle: String = cursor.getString(5)
                 val id: Int = cursor.getInt(6)
                 val userid: Int = cursor.getInt(7)
                 val latitude: Double = cursor.getDouble(8)
                 val longitude: Double = cursor.getDouble(9)
                 val f = Future_location(name,country,cityTown,desc, booked,id,userid,latitude,longitude)
                 futurelocal.add(f)
-                var userMTitle: String = cursor.getString(5)
                 val userM = UserMap(userMTitle,futurelocal)
                 userMList.add(userM)
             } while (cursor.moveToNext())
         }
         cursor.close()
         db.close()
-        return userM
+        return userMList
     }
 
+    fun getUserMapTitle(tId: Int): ArrayList<UserMap>  {
+        val db: SQLiteDatabase = this.readableDatabase
+        val sqlStatement = "SELECT $columnUserMapTitle, $columnFutureLocationId FROM $futureInterestTableName WHERE $columnUserId == $tId"
+
+        val cursor: Cursor = db.rawQuery(sqlStatement, null)
+        var futurelocal = ArrayList<Future_location>()
+        val userM = UserMap("mom",futurelocal)
+        var userMList = ArrayList<UserMap>()
+
+        if (cursor.moveToFirst()) {
+            do {
+                var userMTitle: String = cursor.getString(0)
+                val id: Int = cursor.getInt(1)
+
+                val f = Future_location("name","country","cityTown","desc", "false",id,tId,012.3123,14.1241)
+                futurelocal.add(f)
+                val userM = UserMap(userMTitle,futurelocal)
+                userMList.add(userM)
+            } while (cursor.moveToNext())
+        }
+        cursor.close()
+        db.close()
+        return userMList
+    }
 
     /**
      * This will collect a specific password based on the Id passed and return every column within that row

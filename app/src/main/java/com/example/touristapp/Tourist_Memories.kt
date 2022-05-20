@@ -13,6 +13,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.Toast
 //import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -28,12 +29,13 @@ class Tourist_Memories : Fragment(R.layout.fragment_tourist__memories) {
     lateinit var memory: MutableList<Memories>
     private val TAG = "TouristMemories"
     lateinit var db: TouristDatabase
+    val GALLERY_REQUEST = 100
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         var db = activity?.let { TouristDatabase(it) }
 
-        memory = generateMemory().toMutableList()
-        //memory.add(db!!.getMemory(1))
+        memory = ArrayList()
+        memory.add(db!!.getMemory(1))
 
         val recycleView = view?.findViewById<RecyclerView>(R.id.memories_recycleV)
         recycleView.layoutManager = LinearLayoutManager(activity)
@@ -63,7 +65,8 @@ class Tourist_Memories : Fragment(R.layout.fragment_tourist__memories) {
 
         })
         recycleView.adapter = memoryAdapter
-//        val addBtn = view?.findViewById<Button>(R.id.memories_addImgBtn)
+        val addBtn = view?.findViewById<Button>(R.id.memories_addImgBtn)
+
 //        var resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
 //            if (result.resultCode == Activity.RESULT_OK) {
 //                val data: Intent? = result.data
@@ -80,14 +83,39 @@ class Tourist_Memories : Fragment(R.layout.fragment_tourist__memories) {
 //            }
 //        }
 //
-//        addBtn.setOnClickListener {
-//            Log.i(TAG, "btn press")
-//            val galleryIntent = Intent(Intent.ACTION_PICK)
-//            galleryIntent.type = "image/*"
-//            //returns the data selected
-//            resultLauncher.launch(galleryIntent)
-//            Log.i(TAG, "Go to Gallery")
-//        }
+        addBtn.setOnClickListener {
+            Log.i(TAG, "btn press")
+            val galleryIntent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
+            galleryIntent.type = "image/*"
+            //returns the data selected
+            startActivityForResult(galleryIntent,GALLERY_REQUEST)
+            // resultLauncher.launch(galleryIntent)
+            Log.i(TAG, "Go to Gallery")
+        }
+
+    }
+
+    @Override
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode==GALLERY_REQUEST && resultCode == Activity.RESULT_OK) {
+            Log.i(TAG, "Gets to Img set up")
+
+            val imageView = view?.findViewById<ImageView>(R.id.createReview_uploadedPicture)
+                val selectedImage = data?.data
+                // converts the image type from Uri to bitmap
+                val bitmapImage = MediaStore.Images.Media.getBitmap(requireActivity().contentResolver, selectedImage)
+                // converts bitmap to ByteArray
+                val stream = ByteArrayOutputStream()
+                bitmapImage.compress(Bitmap.CompressFormat.PNG,90,stream)
+                val image = stream.toByteArray()
+                // creates pop up that will create memories object and adds it to the list and update the adapter
+                showAlertDialog(image)
+            Log.i(TAG, "IMG gotten ${selectedImage.toString()}")
+
+        }
+
     }
 
     /**

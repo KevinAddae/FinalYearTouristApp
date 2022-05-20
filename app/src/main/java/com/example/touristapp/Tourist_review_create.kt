@@ -32,7 +32,7 @@ class Tourist_review_create : Fragment(R.layout.fragment_tourist_review_create) 
     lateinit var imageView: ImageView
     val GALLERY_REQUEST = 100
 
-    //private var db = TouristDatabase(requireActivity())
+    private var db = TouristDatabase(requireActivity())
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -69,12 +69,13 @@ class Tourist_review_create : Fragment(R.layout.fragment_tourist_review_create) 
         val title = view?.findViewById<EditText>(R.id.createReview_Title)?.text.toString()
         val descr = view?.findViewById<EditText>(R.id.createReview_Description)?.text.toString()
         val rating = view?.findViewById<RatingBar>(R.id.createReview_Ratingbar)?.rating?.toFloat()
+        val country = view?.findViewById<EditText>(R.id.createReview_country)?.text.toString()
 
         /**
          * Sets the on click listeners for both of the buttons.
          */
         confirmBtn?.setOnClickListener {
-            if (title.isEmpty() || descr.isEmpty() || rating!!.equals(null)) {
+            if (country.isEmpty() || title.isEmpty() || descr.isEmpty() || rating!!.equals(null)) {
                 Toast.makeText(
                     requireActivity(),
                     "Please Make sure all inputs have been added",
@@ -94,15 +95,18 @@ class Tourist_review_create : Fragment(R.layout.fragment_tourist_review_create) 
                 val rev: Review = rating?.let { it1 ->
                     Review(
                         "Hi", title, descr,
-                        it1, "P", image, 1, 1
+                        it1, country, image, 1, 1
                     )
                 }!!
-                //db.addReview(rev)
-
+                db.addReview(rev)
+                var bundle = Bundle()
+                bundle.putSerializable("revItem", rev)
+                var fragment = tourist_review_home()
+                fragment.arguments = bundle
 
                 var fragmentManager = requireActivity().supportFragmentManager
                 var fragmentTransaction = fragmentManager.beginTransaction()
-                fragmentTransaction.replace(R.id.frameLayout, tourist_review_home())
+                fragmentTransaction.replace(R.id.frameLayout, fragment)
                 fragmentTransaction.addToBackStack("Tourist_review_create")
                 fragmentTransaction.commit()
             }
@@ -115,17 +119,18 @@ class Tourist_review_create : Fragment(R.layout.fragment_tourist_review_create) 
 
 
     }
-    @SuppressLint("RestrictedApi")
     @Override
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if (requestCode==GALLERY_REQUEST && resultCode == RESULT_OK) {
+        if (requestCode==GALLERY_REQUEST && resultCode == Activity.RESULT_OK) {
+            Log.i(TAG, "Gets to Img set up")
+
             val imageView = view?.findViewById<ImageView>(R.id.createReview_uploadedPicture)
             val selectedImage = data?.data
-            imageView?.setImageURI(selectedImage)
-            //val bitmapImage = MediaStore.Images.Media.getBitmap(requireActivity().contentResolver, selectedImage)
-            //imageView?.setImageBitmap(bitmapImage)
+            //imageView?.setImageURI(selectedImage)
+            val bitmapImage = MediaStore.Images.Media.getBitmap(requireActivity().contentResolver, selectedImage)
+            imageView?.setImageBitmap(bitmapImage)
             Log.i(TAG, "IMG gotten ${selectedImage.toString()}")
 
         }
