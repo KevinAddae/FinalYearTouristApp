@@ -10,10 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.SnapHelper
-import com.example.touristapp.Model.Memories
-import com.example.touristapp.Model.MemoryAdapter
-import com.example.touristapp.Model.Review
-import com.example.touristapp.Model.ReviewAdapter
+import com.example.touristapp.Model.*
 
 
 class Tourist_Home : Fragment(R.layout.fragment_tourist__home) {
@@ -21,7 +18,7 @@ class Tourist_Home : Fragment(R.layout.fragment_tourist__home) {
     lateinit var reviews: MutableList<Review>
     lateinit var reviewAdapter: ReviewAdapter
     lateinit var memoryAdapter: MemoryAdapter
-    lateinit var memory: MutableList<Memories>
+    lateinit var memory: ArrayList<Memories>
 
     /**
      * The things that will happen before the screen fully loads
@@ -31,7 +28,10 @@ class Tourist_Home : Fragment(R.layout.fragment_tourist__home) {
         /**
          * The top half will set up the recycler view for the review adapters
          */
-        reviews = generateReview().toMutableList()
+        var db = activity?.let { TouristDatabase(it) }
+        if (db != null) {
+            reviews = db.getTextReview()
+        }
         var reviewList = getView()?.findViewById<RecyclerView>(R.id.tourist_home_recycler_review)
         //this will ensure the recycler view will be presented horizontal
         reviewList?.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
@@ -75,8 +75,8 @@ class Tourist_Home : Fragment(R.layout.fragment_tourist__home) {
         /**
          * Sets up the memory adapter the memory recycler view. Works similar to the example above
          */
-
-        memory = generateMemory().toMutableList()
+        memory = ArrayList()
+        memory.add(db!!.getMemory(1))
 
         val recycleView = view?.findViewById<RecyclerView>(R.id.tourist_home_recycler_memories)
         snap.attachToRecyclerView(recycleView)

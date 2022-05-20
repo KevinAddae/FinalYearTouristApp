@@ -41,30 +41,25 @@ class display_review : Fragment(R.layout.fragment_display_review) {
         val title = getView()?.findViewById<TextView>(R.id.viewReview_titleTv)
         val description = getView()?.findViewById<TextView>(R.id.viewReview_description)
         val rating = getView()?.findViewById<RatingBar>(R.id.ratingBar)
-        /**
-         * ParentFragmentManager collects the data sent from the
-         * tourist_display_review fragment
-         */
-//        parentFragmentManager.setFragmentResultListener("showRev",this, FragmentResultListener {
-//                requestKey, result ->
 
-            //val input = result.getSerializable("review") as Review
-            val input = Review("","","",2.0f,"", byteArrayOf(),1,1)
-            title?.text = input.title
-            description?.text = input.description
-            rating?.rating = input.rating
-            item = input
-            // On the occasion no image is found try catch will allow the app to continue
-            try {
-                val userImage: ByteArray = input.image
-                val bmp: Bitmap = BitmapFactory.decodeByteArray(userImage, 0, userImage.size)
-                imageReview?.setImageBitmap(bmp)
-            }
 
-            catch (e : NullPointerException) {
-                Toast.makeText(activity,"No image",Toast.LENGTH_LONG).show()
-            }
- //       })
+        var bundle = this.arguments
+        val input = bundle?.getSerializable("review") as Review
+        title?.text = input.title
+        description?.text = input.description
+        rating?.rating = input.rating
+        item = input
+        // On the occasion no image is found try catch will allow the app to continue
+        try {
+            val userImage: ByteArray = input.image
+            val bmp: Bitmap = BitmapFactory.decodeByteArray(userImage, 0, userImage.size)
+            imageReview?.setImageBitmap(bmp)
+        }
+
+        catch (e : NullPointerException) {
+            Toast.makeText(activity,"No image",Toast.LENGTH_LONG).show()
+        }
+
         /**
          * returns the user to the previous fragment
          */

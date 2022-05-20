@@ -33,9 +33,6 @@ class TouristMemoriesView : Fragment(R.layout.fragment_tourist_memories_view) {
         // Will get the image from the previous fragment and set it as the main image
         val img = view?.findViewById<ImageView>(R.id.memories_view_img)
         var bundle = this.arguments
-        //parentFragmentManager.setFragmentResultListener("showMemory",this, FragmentResultListener {
-        //        requestKey, result ->
-            //val input = result.getSerializable("memory") as Memories
         val input = bundle?.getSerializable("memory") as Memories
         Log.i(TAG,"sent item ${input.location}")
 
@@ -50,9 +47,9 @@ class TouristMemoriesView : Fragment(R.layout.fragment_tourist_memories_view) {
             LinearLayoutManager.HORIZONTAL, false)
 
         recyclerV.setHasFixedSize(true)
-        listOfImg = generateMemory().toMutableList()
-        //listOfImg.add(db.getMemory(1))
-
+        listOfImg = ArrayList()
+        listOfImg.add(db.getMemory(1))
+        listOfImg.add(input)
         memoryAdapter = MemoryViewItemAdapter(requireActivity(),listOfImg, object: MemoryViewItemAdapter.OnClickListener {
             override fun onItemClick(position: Int) {
                 var input = listOfImg[position]

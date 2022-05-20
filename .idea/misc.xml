@@ -4,7 +4,12 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Documents/AndroidStudioProjects/FinalYearTouristApp/app/src/main/res/layout/activity_admin_main_menu.xml" value="0.20520833333333333" />
+        <entry key="..\:/Documents/AndroidStudioProjects/FinalYearTouristApp/app/src/main/res/layout/activity_admin_user_main_menu.xml" value="0.20520833333333333" />
         <entry key="..\:/Documents/AndroidStudioProjects/FinalYearTouristApp/app/src/main/res/layout/fragment_tourist_review_create.xml" value="0.20520833333333333" />
+        <entry key="..\:/Documents/AndroidStudioProjects/FinalYearTouristApp/app/src/main/res/layout/memories_singleitem.xml" value="0.5" />
+        <entry key="..\:/Documents/AndroidStudioProjects/FinalYearTouristApp/app/src/main/res/layout/memories_view_singleitem.xml" value="0.20520833333333333" />
+        <entry key="..\:/Documents/AndroidStudioProjects/FinalYearTouristApp/app/src/main/res/layout/review_single_item.xml" value="0.67" />
+        <entry key="..\:/Documents/AndroidStudioProjects/FinalYearTouristApp/app/src/main/res/layout/tourist_single_item.xml" value="0.20520833333333333" />
         <entry key="..\:/Documents/AndroidStudioProjects/FinalYearTouristApp/app/src/main/res/menu/nav_menu.xml" value="0.20520833333333333" />
         <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/drawable/admin_shape.xml" value="0.3828125" />
         <entry key="..\:/Documents/AndroidStudioProjects/TouristApp/app/src/main/res/drawable/btn_border.xml" value="0.3828125" />

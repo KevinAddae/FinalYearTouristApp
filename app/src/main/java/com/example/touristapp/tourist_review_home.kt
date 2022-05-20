@@ -42,8 +42,7 @@ class tourist_review_home : Fragment(R.layout.fragment_tourist_review_home) {
         var db = activity?.let { TouristDatabase(it) }
 
         //reviews = db!!.getTextReview()
-        reviews = ArrayList()
-        reviews.add(db!!.getImageReview(1))
+        reviews = ArrayList(db!!.getTextReview())
         //reviews = ArrayList()
         //reviews.add(db!!.getReview(1))
 

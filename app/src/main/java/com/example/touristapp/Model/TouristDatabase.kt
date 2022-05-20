@@ -136,7 +136,37 @@ class TouristDatabase(context: Context) : SQLiteOpenHelper(context,DatabaseName,
         db.close()
         return success != -1L
     }
+    fun addPassword(password: Password): Boolean   {
 
+        val db: SQLiteDatabase = this.writableDatabase
+        val cv:ContentValues = ContentValues()
+
+        cv.put(column_Password, password.password)
+        cv.put(column_PUserId, password.userId)
+
+
+        val success = db.insert(passwordTableName, null, cv)
+        db.close()
+        return success != -1L
+    }
+
+    fun getPasswordUser(tId: Int): Password  {
+        val db: SQLiteDatabase = this.readableDatabase
+        val sqlStatement = "SELECT * FROM $passwordTableName WHERE $column_PUserId == $tId"
+
+        val cursor: Cursor = db.rawQuery(sqlStatement, null)
+        if  (cursor.moveToFirst()){
+            db.close()
+
+            return Password(cursor.getInt(0),
+                cursor.getString(1),
+                cursor.getInt(2))
+        } else{
+            db.close()
+            return Password(0, "",0)
+
+        }
+    }
     /**
      * Adds a review to review table
      */

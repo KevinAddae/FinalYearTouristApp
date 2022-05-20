@@ -32,7 +32,6 @@ class Tourist_review_create : Fragment(R.layout.fragment_tourist_review_create) 
     lateinit var imageView: ImageView
     val GALLERY_REQUEST = 100
 
-    private var db = TouristDatabase(requireActivity())
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -49,6 +48,8 @@ class Tourist_review_create : Fragment(R.layout.fragment_tourist_review_create) 
 //                imageView?.setImageBitmap(bitmapImage)
 //            }
 //        }
+
+        var db = activity?.let { TouristDatabase(it) }!!
         imageView = view?.findViewById<ImageView>(R.id.createReview_uploadedPicture)
         val uploadBtn = view?.findViewById<Button>(R.id.createReview_UploadPictureBtn)
 

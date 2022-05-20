@@ -7,9 +7,11 @@
     tools:context=".AdminUserMainMenu">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginLeft="20dp"
         android:id="@+id/admin_user_recycler"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:padding="20dp"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
