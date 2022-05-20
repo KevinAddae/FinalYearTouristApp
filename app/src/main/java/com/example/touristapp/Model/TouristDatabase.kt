@@ -167,6 +167,27 @@ class TouristDatabase(context: Context) : SQLiteOpenHelper(context,DatabaseName,
 
         }
     }
+
+    fun getUsername(name: String): Tourist  {
+        val db: SQLiteDatabase = this.readableDatabase
+        val sqlStatement = "SELECT * FROM $touristTableName WHERE $column_Username == $name"
+
+        val cursor: Cursor = db.rawQuery(sqlStatement, null)
+        if  (cursor.moveToFirst()){
+            db.close()
+
+            return Tourist(cursor.getInt(0),
+                cursor.getString(1),
+                cursor.getString(2),
+                cursor.getString(3),
+                cursor.getString(4))
+        } else{
+            db.close()
+            return Tourist (0, "Username not found", "firstname not found",
+                "lastname not found", "email not found")
+
+        }
+    }
     /**
      * Adds a review to review table
      */

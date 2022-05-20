@@ -21,14 +21,14 @@ import com.example.touristapp.Model.TouristDatabase
 var example = Tourist(1,"k","Kevin","Addae","awdi@myn")
 var pass: Password = Password(1,"rain",1)
 
-//lateinit var db: TouristDatabase
+lateinit var db: TouristDatabase
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
 
-        var db = TouristDatabase(this)
+         db = TouristDatabase(this)
         var p: Tourist = db.getTourist(1)
 
         //AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_YES)
@@ -53,7 +53,12 @@ class MainActivity : AppCompatActivity() {
         //Tourist_MainMenu
         var username = findViewById<EditText>(R.id.edit_username)
         var password = findViewById<EditText>(R.id.edit_password)
-
+        var userN = Tourist(0,"invalid","invalid","invalid","invalid")
+        var pas = Password(0,"invalid",0)
+        if (username.text.isNotEmpty() || password.text.isNotEmpty()) {
+             userN = db.getUsername(username.toString())
+             pas = db.getPasswordUser(userN.userID)
+        }
         when{
             username.text.isEmpty() || password.text.isEmpty()-> Toast.makeText(getApplicationContext(),"Please fill in both username and password", Toast.LENGTH_LONG).show()
 
@@ -61,8 +66,13 @@ class MainActivity : AppCompatActivity() {
                 val i = Intent(this, Tourist_MainMenu::class.java)
                 startActivity(i)
             }
+
             username.text.toString() == "admin" && password.text.toString() == "admin123" -> {
                 val i = Intent(this, AdminMainMenu::class.java)
+                startActivity(i)
+            }
+            username.text.toString() == userN.username && password.text.toString() == pas.password -> {
+                val i = Intent(this, Tourist_MainMenu::class.java)
                 startActivity(i)
             }
             else-> Toast.makeText(getApplicationContext(),"User details are incorrect",Toast.LENGTH_LONG).show()
