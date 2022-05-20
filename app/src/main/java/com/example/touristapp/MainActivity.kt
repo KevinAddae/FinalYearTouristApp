@@ -55,10 +55,10 @@ class MainActivity : AppCompatActivity() {
         var password = findViewById<EditText>(R.id.edit_password)
         var userN = Tourist(0,"invalid","invalid","invalid","invalid")
         var pas = Password(0,"invalid",0)
-        if (username.text.isNotEmpty() || password.text.isNotEmpty()) {
-             userN = db.getUsername(username.toString())
-             pas = db.getPasswordUser(userN.userID)
-        }
+//        if (username.text.isNotEmpty() || password.text.isNotEmpty()) {
+//             userN = db.getUsername(username.toString())
+//             pas = db.getPasswordUser(userN.userID)
+//        }
         when{
             username.text.isEmpty() || password.text.isEmpty()-> Toast.makeText(getApplicationContext(),"Please fill in both username and password", Toast.LENGTH_LONG).show()
 
